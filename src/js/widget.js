@@ -109,9 +109,18 @@ function initSlider() {
     idmslider.events.on('indexChanged', function () {
         var currentSlide = idmslider.getInfo().index;
         var totalSlides = idmslider.getInfo().pages;
-        console.log(currentSlide)
-        console.log(totalSlides)
-        if (currentSlide == totalSlides) {
+        var displayedItems = idmslider.getInfo().items;
+        
+        var currentPage = 1;
+
+        if(displayedItems > 0)
+                currentPage = (currentSlide / displayedItems + 1);
+
+        // console.log("index:" + currentSlide)
+        // console.log("page:" + totalSlides)
+        // console.log("items:" + displayeditems)        
+
+        if (currentPage == totalSlides) {
             container.querySelector('.odh-howtoarriveinsouthtyrol-button-next').classList.remove('active')
         } else {
             container.querySelector('.odh-howtoarriveinsouthtyrol-button-next').classList.add('active')
