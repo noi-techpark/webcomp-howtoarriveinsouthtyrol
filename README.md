@@ -18,7 +18,7 @@ This Webcomponent shows all data from Opendatahub Article Endpoint of type Speci
 ToDo: Include the webcompscript file `dist/js/widget.js` in your HTML and define the web component like this:
 
 ```html
- <odh-howtoarriveinsouthtyrol-widget data-color="#333" data-lang="de" data-ignore="['85B7E735-CAD8-CFFD-CFE8-D5019469B322', '47915EAE-8631-4CBF-42D3-070677AAA366']"></odh-howtoarriveinsouthtyrol-widget>
+ <odh-howtoarriveinsouthtyrol-widget data-color="#333" data-lang="de"></odh-howtoarriveinsouthtyrol-widget>
 ```
 
 ### Attributes
