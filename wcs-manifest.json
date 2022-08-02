@@ -1,0 +1,55 @@
+{
+  "title": "How To Arrive in South Tyrol",
+  "description": "General informations on how to arrive in South Tyrol by car, train, bus or with the airplane.",
+  "descriptionAbstract": "General informations on how to arrive in South Tyrol by car, train, bus or with the airplane",  
+  "license": "AGPL-3.0-or-later",
+  "repositoryUrl":"https://github.com/noi-techpark/webcomp-howtoarriveinsouthtyrol.git",
+  "copyrightHolders": [
+    {
+      "name": "IDM Suedtirol - Alto Adige",
+      "email": "info@idm-suedtirol.com",
+      "organization": "IDM Suedtirol - Alto Adige",
+      "organizationUrl": "https://www.idm-suedtirol.com/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Marketing Factory",
+      "email": "info@marketingfactory.it",
+      "organization": "Marketing Factory GmbH",
+      "organizationUrl": "https://www.marketingfactory.it/"
+    }
+  ],
+  "image": "wcs-logo.png",
+  "searchTags": [ "tourism" ],
+  "dist": {
+    "basePath": "dist/js",
+    "files": [
+      "widget.js"
+    ]    
+  },  
+  "configuration": {
+    "tagName": "odh-howtoarriveinsouthtyrol-widget",    
+    "options": [
+        {
+        "key": "data-lang",
+        "type": "select",
+        "label": "Language (two letter format)",
+        "required": true,
+        "options": {
+          "values": ["en", "de", "it"],
+          "default": "en"
+        }
+      },
+      {
+        "key": "data-color",
+        "type": "text",
+        "label": "Color of the Sliderarrows (Hex Code)",
+        "required": false,
+        "options": {          
+          "default": "#333"
+        }
+      }      
+    ]
+  }
+}

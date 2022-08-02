@@ -1,0 +1,278 @@
+@import './../../node_modules/tiny-slider/dist/tiny-slider.css';
+
+// @font-face {
+//     font-family: 'Suedtirol';
+//     src: url('../fonts/SuedtirolNext-Regular.woff2') format('woff2');
+//     font-weight: 300;
+//     font-display: swap;
+// }
+
+.odh-howtoarriveinsouthtyrol-widget {
+    display: block;
+
+    * {
+        font-family: 'Suedtirol', sans-serif;
+    }
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-widget-container {
+    margin: 0 auto;
+    position: relative;
+    list-style: none;
+    padding: 0;
+    z-index: 1;    
+    //height: 100%;
+    width: 90%;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-wrapper {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    z-index: 1;
+    box-sizing: content-box;
+    padding-bottom: 10px;
+    display: table;
+    table-layout: fixed;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide-category {
+    cursor: default;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide-category svg {
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 80px;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide-category .odh-howtoarriveinsouthtyrol-slide-inner-text {
+    bottom: 80px !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .tns-item {
+    width: 25% !important;
+    text-decoration: none;
+    display: table-cell !important;
+
+    @media only screen and (max-width:1099px) {
+        width: 50%;
+    }
+
+    @media only screen and (max-width:599px) {
+        width: 100%;
+    }
+}
+
+.odh-howtoarriveinsouthtyrol-widget a.tns-item {
+    cursor: pointer;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide {
+    height: 100%;
+    text-align: center;
+
+    .odh-howtoarriveinsouthtyrol-slide-inner {
+        height: 100%;
+    }
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide-invisible-blank {
+    visibility: hidden
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-widget-container-autoheight,
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-widget-container-autoheight .odh-howtoarriveinsouthtyrol-slide {
+    height: auto
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-next,
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-prev {
+    cursor: default;
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 50%;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    margin-top: -22px;
+    z-index: 10;
+    text-align: center;
+    transition: all .1s;
+
+    @media only screen and (max-width:599px) {
+        display: none;
+    }
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-next.active,
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-prev.active {
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-next svg,
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-prev svg {
+    vertical-align: sub
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-next.odh-howtoarriveinsouthtyrol-button-disabled,
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-prev.odh-howtoarriveinsouthtyrol-button-disabled {
+    opacity: .35;
+    cursor: auto;
+    pointer-events: none
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-prev,
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-widget-container-rtl .odh-howtoarriveinsouthtyrol-button-next {
+    left: -75px;
+    right: auto;
+
+    @media only screen and (max-width:1099px) {
+        left: -45px
+    }
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-next,
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-widget-container-rtl .odh-howtoarriveinsouthtyrol-button-prev {
+    right: -75px;
+    left: auto;
+
+    @media only screen and (max-width:1099px) {
+        right: -45px
+    }
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-lock {
+    display: none
+}
+
+.odh-howtoarriveinsouthtyrol-widget .tns-nav {
+display: none;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .tns-nav button {
+    width: 100%;
+    border: none;
+    background: rgba(0, 0, 0, .1);
+}
+
+.odh-howtoarriveinsouthtyrol-widget .tns-nav button.tns-nav-active {
+    background-color: #333;
+    border-radius: 10px;
+}
+
+.odh-howtoarriveinsouthtyrol-widget {
+    width: 100%;
+    padding: 30px 0
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-powered-by {
+    text-align: right;
+    margin-top: 20px;
+    color: #777;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-powered-by svg {
+    margin-left: 6px;
+    vertical-align: middle;
+    height: 50px;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-widget-outer-container {
+    position: relative
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide {
+    position: relative;
+    padding: 0 5px;
+
+    @media only screen and (max-width:599px) {
+        padding: 0;
+    }
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide-container {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .tns-lazy-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide:hover .odh-howtoarriveinsouthtyrol-slide-inner-top {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide:hover .tns-lazy-img {
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
+}
+
+@media only screen and (max-width:599px) {
+    .odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-powered-by {
+        margin-top: 15px
+    }
+
+    .odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide .odh-howtoarriveinsouthtyrol-slide-inner {}
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide .odh-howtoarriveinsouthtyrol-slide-inner-top {
+    height: 200px;
+    overflow: hidden;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide .odh-howtoarriveinsouthtyrol-slide-inner-bottom {
+    padding: 24px;
+    background: #fff;
+    line-height: 24px;
+    text-align: left;
+
+
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide .odh-howtoarriveinsouthtyrol-slide-inner-bottom .odh-howtoarriveinsouthtyrol-slide-inner-text {
+    color: #262626;
+    font-size: 24px;
+    text-decoration: none !important;
+
+    @media only screen and (max-width:599px) {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+}
+
+.odh-howtoarriveinsouthtyrol-slide-inner-date span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
