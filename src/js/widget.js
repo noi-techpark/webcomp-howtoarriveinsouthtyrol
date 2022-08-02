@@ -30,7 +30,7 @@ if (document.querySelectorAll('odh-howtoarriveinsouthtyrol-widget').length) {
         document.write('<style>.odh-howtoarriveinsouthtyrol-widget .tns-nav button.tns-nav-active { background-color:' + clientColor + ' } </style>');
         var htmlstring = loadingPlaceholder();
         container.innerHTML = htmlstring;
-        console.log(clientLanguage)
+        //console.log(clientLanguage)
         getWidgetData();
     }
 }
@@ -44,9 +44,7 @@ function getWidgetData() {
 
     var xmlhttp = new XMLHttpRequest();
 
-    var taghowtoarrive = "special-announcement-anreise"
-
-    xmlhttp.open('GET', 'https://tourism.opendatahub.bz.it/v1/Article?pagenumber=1&articletype=specialannouncement&origin=webcomp-howtoarriveinsouthtyrol&odhactive=true&odhtagfilter=' + taghowtoarrive, true);
+    xmlhttp.open('GET', 'https://tourism.opendatahub.bz.it/v1/Article?pagenumber=1&articletype=specialannouncement&origin=webcomp-howtoarriveinsouthtyrol&odhactive=true&odhtagfilter=special-announcement-anreise&langfilter=' + clientLanguage, true);
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4) {
             if (xmlhttp.status == 200) {
