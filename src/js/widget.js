@@ -189,7 +189,7 @@ function renderIdm(entities) {
             htmlstring += '<div class="odh-howtoarriveinsouthtyrol-slide-inner">';
             htmlstring += '<div class="odh-howtoarriveinsouthtyrol-slide-inner-top">';
             if (entity.ImageGallery != '') {
-                htmlstring += '<img class="tns-lazy-img" src="' + entity.ImageGallery[0].ImageUrl + '"></div>';
+                htmlstring += '<img class="tns-lazy-img" src="' + entity.ImageGallery[0].ImageUrl + '&width=1024' + '"></div>';
             }
             htmlstring += '<div class="odh-howtoarriveinsouthtyrol-slide-inner-bottom">';
             htmlstring += '<div class="odh-howtoarriveinsouthtyrol-slide-inner-text">' + entity.Detail[clientLanguage].Title + '<div class="odh-howtoarriveinsouthtyrol-slide-inner-date">';
