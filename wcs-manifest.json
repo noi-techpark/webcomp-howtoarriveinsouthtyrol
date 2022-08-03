@@ -37,8 +37,8 @@
         "label": "Language (two letter format)",
         "required": true,
         "options": {
-          "values": ["de", "it"],
-          "default": "de"
+          "values": ["de", "it","en"],
+          "default": "en"
         }
       },
       {
