@@ -110,8 +110,8 @@
     }
 }
 
-.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-next.active,
-.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-prev.active {
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-next[aria-disabled="false"],
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-button-prev[aria-disabled="false"] {
     cursor: pointer;
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
@@ -255,18 +255,17 @@ display: none;
     background: #fff;
     line-height: 24px;
     text-align: left;
-
-
 }
 
 .odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-slide .odh-howtoarriveinsouthtyrol-slide-inner-bottom .odh-howtoarriveinsouthtyrol-slide-inner-text {
     color: #262626;
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 24px;
     text-decoration: none !important;
 
     @media only screen and (max-width:599px) {
-        font-size: 20px;
-        line-height: 20px;
+        font-size: 18px;
+        line-height: 22px;
     }
 
 }
