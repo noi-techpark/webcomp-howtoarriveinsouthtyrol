@@ -55,7 +55,7 @@ function getWidgetData(type, slider) {
 
     var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open('GET', 'https://tourism.opendatahub.bz.it/v1/Article?articletype=specialannouncement&origin=webcomp-howtoarriveinsouthtyrol&odhactive=true&odhtagfilter=special-announcement-anreise&langfilter=' + clientLanguage + '&pagenumber=' + currentPage, true);
+    xmlhttp.open('GET', 'https://tourism.opendatahub.bz.it/v1/Article?articletype=specialannouncement&origin=webcomp-howtoarriveinsouthtyrol&odhactive=true&odhtagfilter=special-announcement-anreise&langfilter=' + clientLanguage + '&pagenumber=' + currentPage + '&rawsort=AdditionalArticleInfos.' + clientLanguage + '.Elements.dateposted', true);
     xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
     xmlhttp.setRequestHeader("Access-Control-Allow-Credentials", "true");
     xmlhttp.setRequestHeader("Access-Control-Allow-Methods", "GET");
