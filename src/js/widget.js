@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2021 IDM Südtirol Alto Adige <info@idm-suedtirol.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 import {
     tns
 } from 'tiny-slider';

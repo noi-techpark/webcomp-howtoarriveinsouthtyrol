@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 IDM Südtirol Alto Adige <info@idm-suedtirol.com>
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Webcomponent How To Arrive in South Tyrol
 
 [![REUSE status](https://api.reuse.software/badge/github.com/noi-techpark/webcomp-boilerplate)](https://api.reuse.software/info/github.com/noi-techpark/webcomp-boilerplate)
