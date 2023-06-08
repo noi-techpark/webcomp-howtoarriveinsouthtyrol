@@ -6,6 +6,7 @@ SPDX-License-Identifier: CC0-1.0
 
 # Webcomponent How To Arrive in South Tyrol
 
+![REUSE Compliance](https://github.com/noi-techpark/webcomp-howtoarriveinsouthtyrol/actions/workflows/reuse.yml/badge.svg)
 [![REUSE status](https://api.reuse.software/badge/github.com/noi-techpark/webcomp-boilerplate)](https://api.reuse.software/info/github.com/noi-techpark/webcomp-boilerplate)
 
 This Webcomponent shows all data from Opendatahub Article Endpoint of type SpecialAnnouncement. Currently there are shown the lGeneral informations on how to arrive in South Tyrol by car, train, bus or with the airplane.....
