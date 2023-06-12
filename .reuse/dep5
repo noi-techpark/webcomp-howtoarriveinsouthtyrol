@@ -3,7 +3,7 @@ Upstream-Name: webcomp-boilerplate
 Upstream-Contact: IDM Südtirol Alto Adige <info@idm-suedtirol.com>
 Source: https://github.com/noi-techpark/webcomp-boilerplate
 
-Files: .github/* infrastructure/* .gitignore LICENSE.md *.png *.json
+Files: .github/* infrastructure/* .gitignore .pre-commit-config.yaml LICENSE.md *.png *.json
 Copyright: (c) 2021 IDM Südtirol Alto Adige <info@idm-suedtirol.com>
 License: CC0-1.0
 
