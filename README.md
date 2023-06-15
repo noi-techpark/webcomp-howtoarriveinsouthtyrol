@@ -80,13 +80,13 @@ For a ready to use Docker environment with all prerequisites already installed a
 Get a copy of the repository:
 
 ```bash
-ToDo: git clone https://github.com/noi-techpark/webcomp-specialannouncement.git
+ToDo: git clone https://github.com/noi-techpark/webcomp-howtoarriveinsouthtyrol.git
 ```
 
 Change directory:
 
 ```bash
-ToDo: cd webcomp-specialannouncement/
+ToDo: cd webcomp-howtoarriveinsouthtyrol/
 ```
 
 ### Dependencies
