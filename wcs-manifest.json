@@ -15,10 +15,10 @@
   ],
   "authors": [
     {
-      "name": "Marketing Factory",
-      "email": "info@marketingfactory.it",
-      "organization": "Marketing Factory GmbH",
-      "organizationUrl": "https://www.marketingfactory.it/"
+      "name": "factory",
+      "email": "info@factory.it",
+      "organization": "factory GmbH",
+      "organizationUrl": "https://www.factory.it"
     }
   ],
   "image": "wcs-logo.png",
