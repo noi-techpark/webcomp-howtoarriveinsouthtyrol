@@ -4,6 +4,7 @@
   "descriptionAbstract": "General informations on how to arrive in South Tyrol by car, train, bus or with the airplane",  
   "license": "AGPL-3.0-or-later",
   "repositoryUrl":"https://github.com/noi-techpark/webcomp-howtoarriveinsouthtyrol.git",
+  "shortName": "how-to-arrive-in-south-tyrol",
   "copyrightHolders": [
     {
       "name": "IDM Suedtirol - Alto Adige",
@@ -14,10 +15,10 @@
   ],
   "authors": [
     {
-      "name": "Marketing Factory",
-      "email": "info@marketingfactory.it",
-      "organization": "Marketing Factory GmbH",
-      "organizationUrl": "https://www.marketingfactory.it/"
+      "name": "factory",
+      "email": "info@factory.it",
+      "organization": "factory GmbH",
+      "organizationUrl": "https://www.factory.it"
     }
   ],
   "image": "wcs-logo.png",

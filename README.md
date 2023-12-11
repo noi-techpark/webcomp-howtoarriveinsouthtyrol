@@ -1,5 +1,12 @@
+<!--
+SPDX-FileCopyrightText: 2021 IDM Südtirol Alto Adige <info@idm-suedtirol.com>
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Webcomponent How To Arrive in South Tyrol
 
+[![REUSE Compliance](https://github.com/noi-techpark/webcomp-howtoarriveinsouthtyrol/actions/workflows/reuse.yml/badge.svg)](https://github.com/noi-techpark/odh-docs/wiki/REUSE#badges)
 [![REUSE status](https://api.reuse.software/badge/github.com/noi-techpark/webcomp-boilerplate)](https://api.reuse.software/info/github.com/noi-techpark/webcomp-boilerplate)
 
 This Webcomponent shows all data from Opendatahub Article Endpoint of type SpecialAnnouncement. Currently there are shown the lGeneral informations on how to arrive in South Tyrol by car, train, bus or with the airplane.....
@@ -73,13 +80,13 @@ For a ready to use Docker environment with all prerequisites already installed a
 Get a copy of the repository:
 
 ```bash
-ToDo: git clone https://github.com/noi-techpark/webcomp-specialannouncement.git
+ToDo: git clone https://github.com/noi-techpark/webcomp-howtoarriveinsouthtyrol.git
 ```
 
 Change directory:
 
 ```bash
-ToDo: cd webcomp-specialannouncement/
+ToDo: cd webcomp-howtoarriveinsouthtyrol/
 ```
 
 ### Dependencies
@@ -169,7 +176,7 @@ docker-compose run --rm app /bin/bash -c "npm run test"
 
 ### Support
 
-For support, please contact [help@opendatahub.bz.it](mailto:help@opendatahub.bz.it).
+For support, please contact [help@opendatahub.com](mailto:help@opendatahub.com).
 
 ### Contributing
 
@@ -196,3 +203,19 @@ The project uses this boilerplate: [https://github.com/noi-techpark/webcomp-boil
 ### License
 
 The code in this project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE Version 3 license. See the [LICENSE.md](LICENSE.md) file for more information.
+
+### REUSE
+
+This project is [REUSE](https://reuse.software) compliant, more information about the usage of REUSE in NOI Techpark repositories can be found [here](https://github.com/noi-techpark/odh-docs/wiki/Guidelines-for-developers-and-licenses#guidelines-for-contributors-and-new-developers).
+
+Since the CI for this project checks for REUSE compliance you might find it useful to use a pre-commit hook checking for REUSE compliance locally. The [pre-commit-config](.pre-commit-config.yaml) file in the repository root is already configured to check for REUSE compliance with help of the [pre-commit](https://pre-commit.com) tool.
+
+Install the tool by running:
+```bash
+pip install pre-commit
+```
+Then install the pre-commit hook via the config file by running:
+```bash
+pre-commit install
+```
+

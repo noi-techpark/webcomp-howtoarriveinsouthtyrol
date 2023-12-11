@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2021 IDM Südtirol Alto Adige <info@idm-suedtirol.com>
+#
+# SPDX-License-Identifier: CC0-1.0
+
 version: "3"
 services:
   app:

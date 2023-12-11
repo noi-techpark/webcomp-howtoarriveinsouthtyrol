@@ -1,6 +1,9 @@
 # General
 .DS_Store
 
+# compiled output
+/dist
+
 # Editors
 .idea
 .vscode
