@@ -38,8 +38,18 @@
         "label": "Language (two letter format)",
         "required": true,
         "options": {
-          "values": ["de", "it","en"],
+          "values": ["de", "it","en","nl","cs","pl","fr"],
           "default": "en"
+        }
+      },
+      {
+        "key": "data-filter",
+        "type": "multiselect",
+        "label": "Article Filter",
+        "required": false,
+        "options": {
+          "values": ["Airplane", "Train","Bus","Transfers","LocalMobility","Dolomitipasses","SustainableTravel"],
+          "default": ""
         }
       },
       {
@@ -50,7 +60,13 @@
         "options": {          
           "default": "#333"
         }
-      }      
+      },
+      {
+        "key": "data-hideaccommodations",
+        "type": "checkbox",
+        "label": "Hide Accommodations on Targetarticle",
+        "required": false
+      }       
     ]
   }
 }

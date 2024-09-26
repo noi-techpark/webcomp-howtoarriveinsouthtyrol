@@ -42,7 +42,20 @@ Type: string
 Widget Language.
 
 Type: string
-Options: "de", "it", "en"
+Options: "de", "it","en","nl","cs","pl","fr"
+
+#### data-filter
+
+Article Filter.
+
+Type: multiselect
+Options: "Airplane", "Train","Bus","Transfers","LocalMobility","Dolomitipasses","SustainableTravel"
+
+#### data-hideaccommodations
+
+Hide Accommodations on Targetarticle.
+
+Type: checkbox
 
 ## Customizations
 
