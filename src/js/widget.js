@@ -23,6 +23,7 @@ var currentPage = 1;
 var currentSlide = 0;
 
 var urlParameters = "?utm_source="+ window.location.host +"&utm_medium=howtoarrivewidget";
+var randomArticles = false;
 
 var filterMapping = {
     "Airplane" : "5A255446-0EE1-3BEF-6007-B869AFCE9D82",
@@ -59,6 +60,10 @@ if (document.querySelectorAll('odh-howtoarriveinsouthtyrol-widget').length) {
         }
         if (container.getAttribute('data-hideaccommodations') != undefined) {
             urlParameters += "&partner=accommodation";
+        }
+
+        if (container.getAttribute('data-random') != undefined) {
+            randomArticles = container.getAttribute('data-random');
         }
 
         document.write('<style>.odh-howtoarriveinsouthtyrol-widget .tns-nav button.tns-nav-active { background-color:' + clientColor + ' } </style>');
@@ -187,6 +192,11 @@ function loadingPlaceholder() {
 }
 
 function renderIdm(entities) {
+
+    if(randomArticles){
+        shuffleArticles(entities)
+    }
+
     var htmlstring = '';
     htmlstring += '<div class="odh-howtoarriveinsouthtyrol-widget-outer-container">';
     htmlstring += '<div class="odh-howtoarriveinsouthtyrol-widget-container odh-howtoarriveinsouthtyrol-container-horizontal">';
@@ -245,6 +255,11 @@ function renderIdm(entities) {
 }
 
 function updateHtml(entities) {
+
+    if(randomArticles){
+        shuffleArticles(entities)
+    }
+    
     var htmlstring = '';
 
 
@@ -286,3 +301,17 @@ function updateHtml(entities) {
 
     return htmlstring;
 }
+
+function shuffleArticles(array) {
+    var currentIndex = array.length;
+  
+    while (currentIndex != 0) {
+  
+      var randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  }
+  

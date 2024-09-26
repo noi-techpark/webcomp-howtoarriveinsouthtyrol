@@ -62,13 +62,22 @@
       },
       {
         "key": "data-hideaccommodations",
-        "type": "null",
+        "type": "bool",
         "label": "If true hides Accommodations on Targetarticle",
         "required": false,
         "options": {
           "default": false
         }
-      }       
+      },
+      {
+        "key": "data-random",
+        "type": "bool",
+        "label": "If true shuffles Articles",
+        "required": false,
+        "options": {
+          "default": false
+        }
+      }    
     ]
   }
 }

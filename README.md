@@ -53,7 +53,13 @@ Options: "Airplane", "Train","Bus","Transfers","LocalMobility","Dolomitipasses",
 
 #### data-hideaccommodations
 
-Hide Accommodations on Targetarticle.
+Hides Accommodations on Targetarticle if true.
+
+Type: checkbox
+
+#### data-random
+
+Shuffles Articles if true
 
 Type: checkbox
 
