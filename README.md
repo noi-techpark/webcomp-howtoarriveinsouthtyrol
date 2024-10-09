@@ -4,7 +4,7 @@ SPDX-FileCopyrightText: 2021 IDM Südtirol Alto Adige <info@idm-suedtirol.com>
 SPDX-License-Identifier: CC0-1.0
 -->
 
-# Webcomponent How To Arrive in South Tyrol
+# Webcomponent How To Arrive in South Tyrol 
 
 [![REUSE Compliance](https://github.com/noi-techpark/webcomp-howtoarriveinsouthtyrol/actions/workflows/reuse.yml/badge.svg)](https://github.com/noi-techpark/odh-docs/wiki/REUSE#badges)
 [![REUSE status](https://api.reuse.software/badge/github.com/noi-techpark/webcomp-boilerplate)](https://api.reuse.software/info/github.com/noi-techpark/webcomp-boilerplate)
@@ -42,7 +42,26 @@ Type: string
 Widget Language.
 
 Type: string
-Options: "de", "it", "en"
+Options: "de", "it","en","nl","cs","pl","fr"
+
+#### data-filter
+
+Article Filter.
+
+Type: multiselect
+Options: "Airplane", "Train","Bus","Transfers","LocalMobility","Dolomitipasses","SustainableTravel"
+
+#### data-hideaccommodations
+
+Hides Accommodations on Targetarticle if true.
+
+Type: checkbox
+
+#### data-random
+
+Shuffles Articles if true
+
+Type: checkbox
 
 ## Customizations
 
