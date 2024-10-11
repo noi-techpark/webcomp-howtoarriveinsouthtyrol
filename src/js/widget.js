@@ -23,7 +23,7 @@ var currentPage = 1;
 var currentSlide = 0;
 
 var urlParameters = "?utm_source="+ window.location.host +"&utm_medium=howtoarrivewidget";
-var randomArticles = false;
+var randomArticles = "false";
 
 var filterMapping = {
     "Airplane" : "5A255446-0EE1-3BEF-6007-B869AFCE9D82",
@@ -237,7 +237,7 @@ function loadingPlaceholder() {
 
 function renderIdm(entities) {
 
-    if(randomArticles){
+    if(randomArticles == "true"){
         shuffleArticles(entities)
     }
 
