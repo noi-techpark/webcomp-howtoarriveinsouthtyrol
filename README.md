@@ -49,7 +49,9 @@ Options: "de", "it","en","nl","cs","pl","fr"
 Article Filter.
 
 Type: multiselect
-Options: "Airplane", "Train","Bus","Transfers","LocalMobility","Dolomitipasses","SustainableTravel"
+Options: "Airplane", "Train","Bus","Transfers","LocalMobility","Dolomitipasses","TrafficRestrictions"
+
+Articles are listed in the order of the selected tags, unless data-random is set to true, in which case the order is randomized.
 
 #### data-hideaccommodations
 

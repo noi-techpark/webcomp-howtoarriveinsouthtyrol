@@ -23,7 +23,7 @@ var currentPage = 1;
 var currentSlide = 0;
 
 var urlParameters = "?utm_source="+ window.location.host +"&utm_medium=howtoarrivewidget";
-var randomArticles = false;
+var randomArticles = "false";
 
 var filterMapping = {
     "Airplane" : "5A255446-0EE1-3BEF-6007-B869AFCE9D82",
@@ -33,7 +33,31 @@ var filterMapping = {
     "Transfers" : "C3D525B2-1486-AC99-CF05-4C306DF7316C",
     "LocalMobility" : "E4EBB80F-293F-3669-3DCA-69E0693AEAFB",
     "Dolomitipasses" : "29FF5D46-AA5E-1207-158B-ED2C54F347D6",
-    "SustainableTravel" : "430B0328-9C97-D34D-5BDB-F108535AFD28",
+    "TrafficRestrictions" : "3F5E6A07-A774-61D0-8AC7-DA25E77BB995",
+};
+
+const translations = {
+    de: {
+        no_program_title: "Derzeit ist kein Artikel hinterlegt",
+    },
+    it: {
+        no_program_title: "Attualmente non è disponibile nessun articolo"
+    },
+    en: {
+        no_program_title: "Currently there is no article available"
+    },
+    fr: {
+        no_program_title: "Aucun article n'est actuellement disponible"
+    },
+    nl: { 
+        no_program_title: "Er is momenteel geen artikel beschikbaar"
+    },
+    cs: {  
+        no_program_title: "Momentálně není k dispozici žádný článek"
+    },
+    pl: { 
+        no_program_title: "Obecnie nie jest dostępny żaden artykuł"
+    }
 };
 
 // const cssPath = "./dist/css/widget.css";
@@ -113,8 +137,13 @@ function getWidgetData(type, slider) {
 function createSlider(data) {
 
     var entities = null;
-    // create Skeleton
     entities = data.Items;
+    
+    //sort articles exactly as data-filter order
+    if(clientFilter){
+        entities = sortArticles(entities,clientFilter);
+    }
+
     container.innerHTML = renderIdm(entities);
     initSlider();
 }
@@ -124,6 +153,12 @@ function refreshSlider(data, slider) {
     var entities = null;
     // create Skeleton
     entities = data.Items;
+
+    //sort articles exactly as data-filter order
+    if(clientFilter){
+        entities = sortArticles(entities,clientFilter);
+    }
+
     slider.destroy()
     container.querySelector('.odh-howtoarriveinsouthtyrol-wrapper').innerHTML = container.querySelector('.odh-howtoarriveinsouthtyrol-wrapper').innerHTML += updateHtml(entities);
     initSlider();
@@ -131,9 +166,13 @@ function refreshSlider(data, slider) {
 
 //initSlider
 function initSlider() {
-
+var cardsTablet = 2;
     if (cards > 3){
         cards = 4;
+        cardsTablet = 2;
+    }else if(cards == 0 || cards == 1){
+        cards = 1;
+        cardsTablet = 1;
     }
     
     var idmslider = tns({
@@ -157,12 +196,17 @@ function initSlider() {
                 center: true
             },
             600: {
-                items: 2,
+                items: cardsTablet,
                 edgePadding: 0,
                 gutter: 0,
                 center: false,
             },
             1100: {
+                items: cards,
+                center: false,
+
+            },
+            9999: {
                 items: cards,
                 center: false,
 
@@ -193,7 +237,7 @@ function loadingPlaceholder() {
 
 function renderIdm(entities) {
 
-    if(randomArticles){
+    if(randomArticles == "true"){
         shuffleArticles(entities)
     }
 
@@ -234,11 +278,24 @@ function renderIdm(entities) {
 
     }
 
+    // SHOW EMPTY TEXT IF NO ARTICLES
+    if(cards == 0){
+        htmlstring += '<div class="odh-no-entries">';
+        htmlstring += '<p>' + translations[clientLanguage].no_program_title + '</p>';
+        htmlstring += '</div>';
+    }
+
     htmlstring += '</div>';
+    if(cards > 1){
     // PREV ARROW
     htmlstring += '<div class="odh-howtoarriveinsouthtyrol-button-prev" tabindex="0" role="button" aria-label="Previous slide"  aria-disabled="false"><svg height="17.64" viewBox="0 0 9.84 17.64" width="9.84" xmlns="http://www.w3.org/2000/svg"> <defs>  <style> .odh-howtoarriveinsouthtyrol-widget .a-arrow  {  fill: ' + clientColor + ';    }      </style>  </defs>  <path class="a-arrow" d="M5389.72,253.56l8.22,8.28.48.54-.48.54-8.22,8.28-1.14-1.14,7.74-7.68-7.74-7.68"  transform="translate(5398.42 271.2) rotate(180)"></path> </svg></div>';
+    }
+
+    if(cards > 1){
     // NEXT ARROW
     htmlstring += '<div class="odh-howtoarriveinsouthtyrol-button-next active" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"><svg height="17.64" viewBox="0 0 9.84 17.64" width="9.84" xmlns="http://www.w3.org/2000/svg">  <defs> <style> .odh-howtoarriveinsouthtyrol-widget .a-arrow  {  fill: ' + clientColor + '; }  </style> </defs>   <path class="a-arrow"  d="M5389.72,253.56l8.22,8.28.48.54-.48.54-8.22,8.28-1.14-1.14,7.74-7.68-7.74-7.68"   transform="translate(-5388.58 -253.56)"></path>   </svg></div>';
+    }
+
     htmlstring += '</div>';
     //powered by Suedtirolinfo
     htmlstring += '<div class="odh-howtoarriveinsouthtyrol-powered-by"> powered by <a href="https://www.suedtirol.info/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="93.663" height="73.688" viewBox="0 0 93.663 73.688"><path d="M0,64.491V3.353l1.222-.137C1.508,3.184,30.012,0,46.838,0,65.7,0,92.187,3.185,92.453,3.217l1.21.147V64.491l-46.832,9.2Z" fill="#d0d7d8"/><path d="M46.976,1.513c19,0,45.449,3.207,45.449,3.207V63.5L46.969,72.424,1.513,63.5V4.72S30.031,1.513,46.976,1.513Z" transform="translate(-0.138 -0.138)" fill="#fff"/><g transform="translate(2.925 47.664)"><path d="M3.217,65.2V67.37l7.871,1.546,1.523-3.806-1.523-3.806Z" transform="translate(-3.217 -53.236)" fill="#50742f"/><path d="M15.237,59.476l-3.362,1.663V68.75l10.046,1.973,1.251-5.464-1.251-5.783Z" transform="translate(-4.004 -53.069)" fill="#a9cde9"/><path d="M27.642,62.412l-2.249-2.936H22.925V70.723l4.717.926,1.264-5.3Z" transform="translate(-5.008 -53.069)" fill="#b31939"/><path d="M32.449,71.959l1.185-9.223-1.185-9.224-2.381,1.265L28.114,61.87v9.238Z" transform="translate(-5.48 -52.527)" fill="#de7000"/>';
@@ -247,7 +304,7 @@ function renderIdm(entities) {
     htmlstring += '<path d="M79.172,38.936a10.158,10.158,0,0,1-2.053-.2,7.257,7.257,0,0,1-2.251-5.285c0-2.7,1.581-5.862,6.038-5.862a9.4,9.4,0,0,1,2.1.25,9.348,9.348,0,0,1,2.077,5.511C85.084,36.744,82.763,38.936,79.172,38.936Zm.9-9.062c-1.3,0-2.144,1.108-2.144,2.823a6.732,6.732,0,0,0,1.25,3.916,2.732,2.732,0,0,0,.617.063c1.363,0,2.244-1.108,2.244-2.823a6.4,6.4,0,0,0-1.3-3.892,2.553,2.553,0,0,0-.667-.087Z" transform="translate(-14.06 -20.974)" fill="#758592"/>';
     htmlstring += '<path d="M91.29,38.885a6.168,6.168,0,0,1-2.193-.4,8.507,8.507,0,0,1-.954-4.383c0-1.552.327-2.738.327-4A9.169,9.169,0,0,0,88.229,28a9.133,9.133,0,0,1,2.911-.534,5.793,5.793,0,0,1,.388,2.418c0,1.323-.333,3.281-.333,4.148a5.783,5.783,0,0,0,.331,2.255,1.6,1.6,0,0,0,.67.1,8.419,8.419,0,0,0,2.252-.4,5.075,5.075,0,0,1,.318,1.666,4.833,4.833,0,0,1-.05.642A12.058,12.058,0,0,1,91.29,38.885Z" transform="translate(-15.266 -20.963)" fill="#758592"/></g></svg></a>';
     //odh logo
-    htmlstring += '<a href="https://opendatahub.com/" target="_blank"><?xml version="1.0" encoding="UTF-8"?><svg id="Ebene_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.25 28.21"><defs><style>.cls-1{fill:#12100b;stroke-width:0px;}</style></defs><g id="Livello_3"><path class="cls-1" d="m0,3.73C0,1.78,1.31,0,3.71,0s3.7,1.76,3.7,3.69-1.26,3.76-3.67,3.76c-2.4-.01-3.74-1.78-3.74-3.72m5.81,0c0-1.34-.62-2.5-2.06-2.5S1.63,2.35,1.63,3.69s.66,2.52,2.09,2.52,2.09-1.14,2.09-2.48"/><path class="cls-1" d="m8.76.13h2.36c1.56,0,2.75.72,2.75,2.27s-1.13,2.36-2.92,2.36h-.66v2.56h-1.53s0-7.19,0-7.19Zm2.21,3.47c.96,0,1.37-.39,1.37-1.19,0-.72-.4-1.12-1.34-1.12h-.71v2.31h.68Z"/><polygon class="cls-1" points="15.15 .13 19.3 .13 19.3 1.38 16.65 1.38 16.65 3 18.98 3 18.98 4.19 16.65 4.19 16.65 6.06 19.37 6.06 19.37 7.31 15.15 7.31 15.15 .13"/><path class="cls-1" d="m20.86.13h1.53l2.59,3.72c.43.62.69,1.09.75,1.21h.02c0-.1-.04-.58-.04-1.13V.13h1.38v7.19h-1.39l-2.79-3.99c-.39-.54-.6-.94-.69-1.08h-.02c.01.1.04.51.04.96v4.11h-1.38s0-7.19,0-7.19Z"/><path class="cls-1" d="m.4,9.55h2.17c2.83,0,4.11,1.42,4.11,3.5s-1.31,3.69-4.16,3.69H.4v-7.19Zm2.23,5.97c1.62,0,2.44-.83,2.44-2.43s-.79-2.32-2.49-2.32h-.66v4.75h.71Z"/><path class="cls-1" d="m10.1,9.55h1.47l2.82,7.19h-1.66l-.49-1.35h-2.87l-.48,1.35h-1.53l2.74-7.19Zm1.7,4.62l-.62-1.71c-.23-.62-.32-1.08-.39-1.24h-.02c-.05.17-.17.66-.38,1.24l-.61,1.71h2.02Z"/><polygon class="cls-1" points="17.04 10.8 15.05 10.8 15.05 9.55 20.54 9.55 20.54 10.8 18.57 10.8 18.57 16.74 17.04 16.74 17.04 10.8"/><path class="cls-1" d="m23.96,9.55h1.47l2.82,7.19h-1.66l-.49-1.35h-2.87l-.48,1.35h-1.53l2.74-7.19Zm1.7,4.62l-.62-1.71c-.23-.62-.32-1.08-.39-1.24h-.01c-.05.17-.17.66-.38,1.24l-.61,1.71h2.01Z"/><polygon class="cls-1" points=".4 18.67 1.99 18.67 1.99 22.49 6.68 22.49 6.68 18.67 8.27 18.67 8.27 28.05 6.68 28.05 6.68 23.8 1.99 23.8 1.99 28.05 .4 28.05 .4 18.67"/><path class="cls-1" d="m10.97,24.47v-5.8h1.59v5.65c0,1.75.68,2.57,2.28,2.57s2.2-.96,2.2-2.42v-5.8h1.48v5.67c0,2.43-1.21,3.87-3.72,3.87-2.64,0-3.83-1.4-3.83-3.74"/><path class="cls-1" d="m21.42,18.67h2.83c1.75,0,3.17.61,3.17,2.34,0,1.17-.65,1.84-1.68,2.11v.03c1.14.18,2.07.96,2.07,2.28,0,1.91-1.48,2.62-3.6,2.62h-2.79v-9.38Zm2.64,3.93c1.23,0,1.76-.44,1.76-1.38s-.59-1.3-1.73-1.3h-1.11v2.68s1.08,0,1.08,0Zm.09,4.2c1.36,0,2.04-.42,2.04-1.45s-.55-1.55-1.96-1.55h-1.25v3h1.17Z"/></g></svg></a>';
+    htmlstring += '<a href="https://opendatahub.com/" target="_blank"><?xml version="1.0" encoding="UTF-8"?><svg id="Ebene_1" class="odh-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.25 28.21"><defs><style>.cls-1{fill:#12100b;stroke-width:0px;}</style></defs><g id="Livello_3"><path class="cls-1" d="m0,3.73C0,1.78,1.31,0,3.71,0s3.7,1.76,3.7,3.69-1.26,3.76-3.67,3.76c-2.4-.01-3.74-1.78-3.74-3.72m5.81,0c0-1.34-.62-2.5-2.06-2.5S1.63,2.35,1.63,3.69s.66,2.52,2.09,2.52,2.09-1.14,2.09-2.48"/><path class="cls-1" d="m8.76.13h2.36c1.56,0,2.75.72,2.75,2.27s-1.13,2.36-2.92,2.36h-.66v2.56h-1.53s0-7.19,0-7.19Zm2.21,3.47c.96,0,1.37-.39,1.37-1.19,0-.72-.4-1.12-1.34-1.12h-.71v2.31h.68Z"/><polygon class="cls-1" points="15.15 .13 19.3 .13 19.3 1.38 16.65 1.38 16.65 3 18.98 3 18.98 4.19 16.65 4.19 16.65 6.06 19.37 6.06 19.37 7.31 15.15 7.31 15.15 .13"/><path class="cls-1" d="m20.86.13h1.53l2.59,3.72c.43.62.69,1.09.75,1.21h.02c0-.1-.04-.58-.04-1.13V.13h1.38v7.19h-1.39l-2.79-3.99c-.39-.54-.6-.94-.69-1.08h-.02c.01.1.04.51.04.96v4.11h-1.38s0-7.19,0-7.19Z"/><path class="cls-1" d="m.4,9.55h2.17c2.83,0,4.11,1.42,4.11,3.5s-1.31,3.69-4.16,3.69H.4v-7.19Zm2.23,5.97c1.62,0,2.44-.83,2.44-2.43s-.79-2.32-2.49-2.32h-.66v4.75h.71Z"/><path class="cls-1" d="m10.1,9.55h1.47l2.82,7.19h-1.66l-.49-1.35h-2.87l-.48,1.35h-1.53l2.74-7.19Zm1.7,4.62l-.62-1.71c-.23-.62-.32-1.08-.39-1.24h-.02c-.05.17-.17.66-.38,1.24l-.61,1.71h2.02Z"/><polygon class="cls-1" points="17.04 10.8 15.05 10.8 15.05 9.55 20.54 9.55 20.54 10.8 18.57 10.8 18.57 16.74 17.04 16.74 17.04 10.8"/><path class="cls-1" d="m23.96,9.55h1.47l2.82,7.19h-1.66l-.49-1.35h-2.87l-.48,1.35h-1.53l2.74-7.19Zm1.7,4.62l-.62-1.71c-.23-.62-.32-1.08-.39-1.24h-.01c-.05.17-.17.66-.38,1.24l-.61,1.71h2.01Z"/><polygon class="cls-1" points=".4 18.67 1.99 18.67 1.99 22.49 6.68 22.49 6.68 18.67 8.27 18.67 8.27 28.05 6.68 28.05 6.68 23.8 1.99 23.8 1.99 28.05 .4 28.05 .4 18.67"/><path class="cls-1" d="m10.97,24.47v-5.8h1.59v5.65c0,1.75.68,2.57,2.28,2.57s2.2-.96,2.2-2.42v-5.8h1.48v5.67c0,2.43-1.21,3.87-3.72,3.87-2.64,0-3.83-1.4-3.83-3.74"/><path class="cls-1" d="m21.42,18.67h2.83c1.75,0,3.17.61,3.17,2.34,0,1.17-.65,1.84-1.68,2.11v.03c1.14.18,2.07.96,2.07,2.28,0,1.91-1.48,2.62-3.6,2.62h-2.79v-9.38Zm2.64,3.93c1.23,0,1.76-.44,1.76-1.38s-.59-1.3-1.73-1.3h-1.11v2.68s1.08,0,1.08,0Zm.09,4.2c1.36,0,2.04-.42,2.04-1.45s-.55-1.55-1.96-1.55h-1.25v3h1.17Z"/></g></svg></a>';
     htmlstring += '</div>';
     htmlstring += '</div>';
     // ENDMODAL
@@ -297,8 +354,6 @@ function updateHtml(entities) {
         }
     }
 
-
-
     return htmlstring;
 }
 
@@ -314,4 +369,15 @@ function shuffleArticles(array) {
         array[randomIndex], array[currentIndex]];
     }
   }
-  
+
+function sortArticles(array,sortOrder) {
+    array.sort((a, b) => {
+        let indexA = sortOrder.indexOf(a.Id);
+        let indexB = sortOrder.indexOf(b.Id);
+        if (indexA === -1) indexA = Infinity;
+        if (indexB === -1) indexB = Infinity;
+        return indexA - indexB;
+    });
+
+    return array;
+}

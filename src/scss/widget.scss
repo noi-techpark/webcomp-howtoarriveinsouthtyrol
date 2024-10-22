@@ -207,6 +207,10 @@ display: none;
     height: 50px;
 }
 
+.odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-powered-by svg.odh-logo {
+    height: 30px;
+}
+
 .odh-howtoarriveinsouthtyrol-widget .odh-howtoarriveinsouthtyrol-widget-outer-container {
     position: relative
 }
@@ -283,4 +287,21 @@ display: none;
     display: inline-block;
     vertical-align: middle;
     margin-right: 5px;
+}
+
+.odh-howtoarriveinsouthtyrol-widget .odh-no-entries {
+    background-color: #fff;
+    border: solid 1px #ccc;
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 4px;
+    width: 100%;
+    color: #262626;
+
+    a {
+        color: #ccc;
+        text-decoration: none;
+    }
 }
