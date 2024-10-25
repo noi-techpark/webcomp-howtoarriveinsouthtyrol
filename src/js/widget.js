@@ -82,7 +82,7 @@ if (document.querySelectorAll('odh-howtoarriveinsouthtyrol-widget').length) {
                 clientFilter = clientFilter.replaceAll(key, filterMapping[key]);
               });
         }
-        if (container.getAttribute('data-hideaccommodations') != undefined) {
+        if (container.getAttribute('data-hideaccommodations') != undefined && container.getAttribute('data-hideaccommodations') == "true") {
             urlParameters += "&partner=accommodation";
         }
 
