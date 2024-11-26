@@ -48,7 +48,7 @@
         "label": "Article Filter",
         "required": false,
         "options": {
-          "values": ["Airplane", "Train","Bus","Transfers","LocalMobility","Dolomitipasses","TrafficRestrictions"]
+          "values": ["Airplane","Bus","Car","Dolomitipasses","LocalMobility","TrafficRestrictions","Train","Transfers"]
         }
       },
       {
