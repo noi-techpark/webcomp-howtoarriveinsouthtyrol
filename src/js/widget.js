@@ -321,6 +321,7 @@ function updateHtml(entities) {
 
 
     for (var key in entities) {
+        if (!entities.hasOwnProperty(key)) continue;
 
         var entity = entities[key];
     
