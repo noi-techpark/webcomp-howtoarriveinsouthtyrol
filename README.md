@@ -92,7 +92,7 @@ on your local machine for development and testing purposes.
 To build the project, the following prerequisites must be met:
 
 - ToDo: Check the prerequisites
-- Node 12 / NPM 6
+- Node 20 (see `.nvmrc`)
 
 For a ready to use Docker environment with all prerequisites already installed and prepared, you can check out the [Docker environment](#docker-environment) section.
 
@@ -117,6 +117,16 @@ Download all dependencies:
 ```bash
 npm install
 ```
+
+### Environment
+
+Copy `.env.example` to `.env` and adjust the variables if needed:
+
+```bash
+cp .env.example .env
+```
+
+`TOURISM_BASE_PATH` is the Open Data Hub Tourism API the webcomponent reads the announcements from. Without a `.env` the production API `https://tourism.api.opendatahub.com/v1` is used.
 
 ### Build
 

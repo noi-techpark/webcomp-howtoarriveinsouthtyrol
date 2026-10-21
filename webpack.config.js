@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: CC0-1.0
 
+require('dotenv').config();
 const webpack = require('webpack');
 
 const TerserJSPlugin = require('terser-webpack-plugin');
@@ -38,6 +39,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.TOURISM_BASE_PATH': JSON.stringify(process.env.TOURISM_BASE_PATH || 'https://tourism.api.opendatahub.com/v1'),
+        }),
         // new MiniCssExtractPlugin({
         //     filename: 'css/[name].css',
         //     chunkFilename: 'css/[id].css',

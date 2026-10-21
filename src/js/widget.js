@@ -106,7 +106,7 @@ function getWidgetData(type, slider) {
 
     var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open('GET', 'https://tourism.opendatahub.com/v1/Article?articletype=specialannouncement&origin=webcomp-howtoarriveinsouthtyrol&odhactive=true&odhtagfilter=special-announcement-anreise&langfilter=' + clientLanguage + '&pagenumber=' + currentPage + '&rawsort=AdditionalArticleInfos.' + clientLanguage + '.Elements.dateposted&referer='+window.location.host, true);
+    xmlhttp.open('GET', process.env.TOURISM_BASE_PATH + '/Article?articletype=specialannouncement&origin=webcomp-howtoarriveinsouthtyrol&odhactive=true&odhtagfilter=special-announcement-anreise&langfilter=' + clientLanguage + '&pagenumber=' + currentPage + '&rawsort=AdditionalArticleInfos.' + clientLanguage + '.Elements.dateposted&referer='+window.location.host, true);
     xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
     xmlhttp.setRequestHeader("Access-Control-Allow-Credentials", "true");
     xmlhttp.setRequestHeader("Access-Control-Allow-Methods", "GET");

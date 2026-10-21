@@ -5,16 +5,16 @@ on:
   pull_request:
 
 env:
-  NODE_VERSION: 14.x
+  NODE_VERSION: 20.x
 
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: REUSE Compliance Check
-        uses: fsfe/reuse-action@v1
+        uses: fsfe/reuse-action@v5
       - uses: noi-techpark/github-actions/npm-build@v2
         with:
           build-command: npm run build
@@ -24,12 +24,16 @@ jobs:
 
 
   deploy-test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     if: github.ref == 'refs/heads/main'
     needs: test
     concurrency: deploy-test
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - uses: noi-techpark/github-actions/env-file@v2
+        env:
+          X_TOURISM_BASE_PATH: "https://tourism.api.opendatahub.testingmachine.eu/v1"
 
       - uses: noi-techpark/github-actions/npm-build@v2
         with:
@@ -42,12 +46,16 @@ jobs:
           version-tag: ${{github.sha}}
 
   deploy-prod:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     if: startsWith(github.ref, 'refs/tags/v')
     needs: test
     concurrency: deploy-prod
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - uses: noi-techpark/github-actions/env-file@v2
+        env:
+          X_TOURISM_BASE_PATH: "https://tourism.api.opendatahub.com/v1"
 
       - uses: noi-techpark/github-actions/npm-build@v2
         with:
